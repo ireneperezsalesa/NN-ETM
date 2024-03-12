@@ -1,0 +1,1 @@
+Empty folder to store the outputs of training.py, which saves the trained .pth model every 10 epochs.
