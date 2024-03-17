@@ -47,7 +47,7 @@ def loss_fn(gt_states, estim_states, events, full_comm_mse, L):  # trade-off bet
 
 
 # Checkpoint folder
-path_to_checkpoint = './checkpoints/L1/'
+path_to_checkpoint = './checkpoints/'  # the trained model will be stored here
 
 # Load NN model
 model = torch.load('./pretrain/m_500.pth')  # load pretrained model as initialization for the weights
@@ -55,14 +55,14 @@ model.train()
 
 # Optimizer and training configuration
 optimizer = torch.optim.Adam(model.parameters(), lr=5e-2)
-epochs = 500
+epochs = 500  # training iterations
 batch_size = 10  # number of pre-generated sequences for the reference signals
-L = 1
+L = 1  # assigns weights to the error vs. communication trade-off in the cost function loss_fn
 
 # Generate groundtruth training data from system
-h = 1e-3
-T = 10
-N = 2
+h = 1e-3  # simulation step
+T = 10  # simulation time
+N = 2  # number of agents
 Adj = load_graph(N)  # adjacency matrix for the graph
 times_batch, u_batch, u_avg_batch = generate_signals(N, h, T, batch_size)  # generate reference signals for consensus
 

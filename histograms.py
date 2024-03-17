@@ -36,9 +36,6 @@ comm2 = torch.zeros(Nsim)
 # case3
 error3 = torch.zeros(Nsim)
 comm3 = torch.zeros(Nsim)
-# case 4
-error4 = torch.zeros(Nsim)
-comm4 = torch.zeros(Nsim)
 
 # Generate groundtruth data from system
 h = 1e-3

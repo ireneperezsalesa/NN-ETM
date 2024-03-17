@@ -12,7 +12,43 @@ Here, we provide our code to train and test the NN-ETM to facilitate the use of 
 User requirements
 -----------------
 
-Our code has been tested in an Anaconda3 environment with Python 3.11 and the Pytorch version 2.1.2.
+Our code has been tested in an Anaconda3 environment with Python 3.11 
+and the Pytorch version 2.1.2.
+
+
+Files
+-----
+- **main.py**: Test a trained NN-ETM model and plot results.
+- **training.py**: Training loop for NN-ETM. 
+- **pretrain.py**: Optional pretraining process. Learns a fixed-threshold policy
+for NN-ETM. The learned weights are used as initialization for training.py.
+- **model/model.py**: Contains the NN architecture used by training.py.
+- **algorithms/consensus_alg.py**: Contains a linear dynamic consensus protocol
+using NN-ETM, used by training.py and main.py.
+- **utils/generate_data.py**: Generates reference signals for the consensus protocol.
+- **histograms.py** and **plot_histograms.py**: Replicate the histogram experiment in the paper.
+
+
+Training and testing NN-ETM
+---------------------------
+
+- To train the NN-ETM, run **training.py**. The neural network aims to optimize a cost function
+``
+cost = consensus_error + L * communication_rate
+``.
+To adjust the trade-off between consensus error and communication rate 
+of the event-triggered consensus setup, tune the parameter ``L`` in the cost function. 
+Increasing ``L`` results in less communication but higher error values.
+By default, the neural network is initialized to a pretrained model (pretrain/m_500.pth) which
+has learned a fixed-threshold event triggering policy. The trained models are stored in the 
+"checkpoints" directory.
+
+- To test a trained model, edit the "path_to_model" variable in **main.py** to select the
+desired trained neural network and run it. The plotted results are stored in the "figs" directory by default.
+
+- Different parameters can be edited for both files, such as the training configuration, 
+the design constants in the NN-ETM and the gain in the consensus protocol. To edit the neural network model,
+the consensus protocol or the reference signals, please refer to the file descriptions above.
 
 
 Citation
