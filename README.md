@@ -32,7 +32,7 @@ using NN-ETM, used by training.py and main.py.
 Training and testing NN-ETM
 ---------------------------
 
-- To train the NN-ETM, run **training.py**. The neural network aims to optimize a cost function
+- To train the NN-ETM, run **training.py** (from command line: ``python training.py``). The neural network aims to optimize a cost function
 ``
 cost = consensus_error + L * communication_rate
 ``.
@@ -44,7 +44,7 @@ has learned a fixed-threshold event triggering policy. The trained models are st
 "checkpoints" directory.
 
 - To test a trained model, edit the "path_to_model" variable in **main.py** to select the
-desired trained neural network and run it. The plotted results are stored in the "figs" directory by default.
+desired trained neural network and run it (from command line: ``python main.py``). The plotted results are stored in the "figs" directory by default.
 
 - Different parameters can be edited for both files, such as the training configuration, 
 the design constants in the NN-ETM and the gain in the consensus protocol. To edit the neural network model,
