@@ -19,7 +19,9 @@ performance of the consensus protocol), different communication policies can be 
 
 Here, we provide our code to train and test the NN-ETM to facilitate the use of our proposal.
 
-! **Note: This repository may suffer changes during the peer review process of the paper.**  
+```diff
+! Note: This repository may suffer changes during the peer review process of the paper.
+```
 
 
 User requirements
