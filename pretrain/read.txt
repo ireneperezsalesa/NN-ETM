@@ -1,1 +1,1 @@
-Empty folder to store checkpoints from the pre-training stage pretrain.py.
+Folder to store the outputs of pretrain.py, which saves the trained .pth model every 10 epochs.

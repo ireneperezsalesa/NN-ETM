@@ -1,12 +1,25 @@
 NN-ETM
 ==============
 
-This is the companion code for the paper "NN-ETM: Enabling Safe Neural Network-Based Event-Triggering Mechanisms for Consensus Problems", by [Irene Perez-Salesa](https://ireneperezsalesa.github.io/), [Rodrigo Aldana-Lopez](https://rodrigoaldana.github.io/) and [Carlos Sagues](https://webdiis.unizar.es/~csagues/). The preprint can be found [here](https://arxiv.org/abs/2403.12567).
+This is the companion code for the paper "NN-ETM: Enabling Safe Neural Network-Based 
+Event-Triggering Mechanisms for Consensus Problems", by 
+[Irene Perez-Salesa](https://ireneperezsalesa.github.io/), 
+[Rodrigo Aldana-Lopez](https://rodrigoaldana.github.io/) and 
+[Carlos Sagues](https://webdiis.unizar.es/~csagues/). The preprint can be found 
+[here](https://arxiv.org/abs/2403.12567).
 
-In this work, we develop NN-ETM, a neural network-based event-triggering mechanism for multi-agent consensus problems. We aim to provide a general solution for the communication policy of the agents by means of the NN-ETM, in which the neural network is used to optimize the behavior of the setup, while ensuring stability guarantees for the consensus protocol.
-By using different neural network architectures within the structure of the NN-ETM and tuning the parameters in the cost function (which represents the trade-off between the communication load and the performance of the consensus protocol), different communication policies can be learned.
+In this work, we develop NN-ETM, a neural network-based event-triggering mechanism for 
+multi-agent consensus problems. We aim to provide a general solution for the communication policy
+of the agents by means of the NN-ETM, in which the neural network is used to adaptively reduce 
+communication in the setup by learning a variable event threshold. Moreover, we incorporate the neural 
+network safely, ensuring stability guarantees for the consensus protocol under NN-ETM.
+By using different neural network architectures within the structure of the NN-ETM and tuning the 
+parameters in the cost function (which represents the trade-off between the communication load and the
+performance of the consensus protocol), different communication policies can be learned.
 
 Here, we provide our code to train and test the NN-ETM to facilitate the use of our proposal.
+
+! **Note: This repository may suffer changes during the peer review process of the paper.**  
 
 
 User requirements
@@ -23,10 +36,11 @@ Files
 - **pretrain.py**: Optional pretraining process. Learns a fixed-threshold policy
 for NN-ETM. The learned weights are used as initialization for training.py.
 - **model/model.py**: Contains the NN architecture used by training.py.
-- **algorithms/consensus_alg.py**: Contains a linear dynamic consensus protocol
+- **algorithms/consensus_lin.py**: Contains a linear dynamic consensus protocol
 using NN-ETM, used by training.py and main.py.
-- **utils/generate_data.py**: Generates reference signals for the consensus protocol.
-- **histograms.py** and **plot_histograms.py**: Replicate the histogram experiment in the paper.
+- **utils/generate_data.py**: Generates random reference signals for the consensus protocol.
+- **generate_seq_batch.py**: Uses "generate_data.py" to generate a batch of several sequences of reference signals, to be used for training or test. The batch is saved to a file in the "data" folder.
+- **test_over_batch.py**: Test trained NN-ETM over a batch of sequences and compute average MSE and communication rate.
 
 
 Training and testing NN-ETM
@@ -39,7 +53,7 @@ cost = consensus_error + L * communication_rate
 To adjust the trade-off between consensus error and communication rate 
 of the event-triggered consensus setup, tune the parameter ``L`` in the cost function. 
 Increasing ``L`` results in less communication but higher error values.
-By default, the neural network is initialized to a pretrained model (pretrain/m_500.pth) which
+By default, the neural network is initialized to a pretrained model (pretrain/example_pretrain.pth) which
 has learned a fixed-threshold event triggering policy. The trained models are stored in the 
 "checkpoints" directory.
 
@@ -47,8 +61,7 @@ has learned a fixed-threshold event triggering policy. The trained models are st
 desired trained neural network and run it (from command line: ``python main.py``). The plotted results are stored in the "figs" directory by default.
 
 - Different parameters can be edited for both files, such as the training configuration, 
-the design constants in the NN-ETM and the gain in the consensus protocol. To edit the neural network model,
-the consensus protocol or the reference signals, please refer to the file descriptions above.
+the design constants in the NN-ETM and the gain in the consensus protocol. To edit the neural network model, the consensus protocol or the reference signals, please refer to the file descriptions above.
 
 
 Citation

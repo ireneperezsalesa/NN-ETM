@@ -1,6 +1,6 @@
 """
 Copyright (C) 2024 Irene Perez-Salesa <i.perez at unizar dot es> (University of Zaragoza)
-For more information see <https://github.com/ireneperezsalesa/NN-ETM/blob/main/README.md>
+For more information see <https://github.com/ireneperezsalesa/NN-ETM/blob/master/README.md>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,13 +18,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 # Training loop for the pre-training stage
-# Force NN to learn a fixed output for eta(t), the learned weights will be used to initialize training.py
+# Force NN to learn a fixed output for eta(t), the learned weights will be used to initialize the NN in training.py
 
 import torch
-from torch import nn
-from model.model import *
+from model.model import Simple
 from utils.generate_data import *
-from algorithms.consensus_alg import *
+from algorithms.consensus_lin import lin_consensus_train
 
 
 def loss_fn(target_eta, etas):
@@ -34,7 +33,7 @@ def loss_fn(target_eta, etas):
 
 
 # Checkpoint folder
-path_to_checkpoint = './checkpoints/pretrain/'
+path_to_checkpoint = './pretrain/'
 
 # Load NN model
 model = Simple()
@@ -42,28 +41,33 @@ model.train()
 
 # Optimizer and training configuration
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
-epochs = 500
-batch_size = 10
+epochs = 50
+batch_size = 1
 
-# Generate groundtruth training data from system
+# Generate sequences of reference signals
 h = 1e-3
-T = 10
-N = 2
+T = 5
+N = 3
 Adj = load_graph(N)
 times_batch, u_batch, u_avg_batch = generate_signals(N, h, T, batch_size)
 
 # Trigger design parameters
 eps = 0.001
-sigma = 0.1
+sigma = 1
 
 # Consensus gain
-kappa = 5
+kappa = 50
 
 target_eta = 0.5  # target output value for eta(t)
 
+# Initialization for the auxiliary variables. Must fulfill sum(p0)=0
+p0 = 10 * torch.randn(N)
+p0[0] = -torch.sum(p0[1:])
+z0 = 10 * torch.randn(N)
+
 
 print('Start training')
-with open("losses_pretrain.txt", "a") as file1:
+with open("./pretrain/losses_pretrain.txt", "a") as file1:
     for epoch in range(0, epochs + 1):
 
         optimizer.zero_grad()
@@ -76,7 +80,7 @@ with open("losses_pretrain.txt", "a") as file1:
             u_avg = u_avg_batch[i]
 
             # Run estimation
-            z_estim, evs, etas = lin_consensus_train(times, u, Adj, kappa, sigma, eps, model)
+            z_estim, evs, etas = lin_consensus_train(times, u, Adj, kappa, sigma, eps, model, z0, p0)
 
             # Add loss
             loss = loss + loss_fn(target_eta, etas)
