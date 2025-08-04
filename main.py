@@ -22,7 +22,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import torch
 from utils.generate_data import *
 from algorithms.consensus_lin import *
-from algorithms.consensus_george import *
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import scienceplots
@@ -127,5 +126,6 @@ if __name__ == '__main__':
                              * torch.linalg.norm(gt_states[time] - estim_states[time, node]))
         mserr = err / (N * times.shape[0])
         print('MSE: ', mserr)
+
 
 
