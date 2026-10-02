@@ -6,7 +6,7 @@ Event-Triggering Mechanisms for Consensus Problems", by
 [Irene Perez-Salesa](https://ireneperezsalesa.github.io/), 
 [Rodrigo Aldana-Lopez](https://rodrigoaldana.github.io/) and 
 [Carlos Sagues](https://webdiis.unizar.es/~csagues/). The preprint can be found 
-[here](https://arxiv.org/abs/2403.12567).
+[here](https://arxiv.org/abs/2403.12567). 
 
 In this work, we develop NN-ETM, a neural network-based event-triggering mechanism for 
 multi-agent consensus problems. We aim to provide a general solution for the communication policy
@@ -18,10 +18,6 @@ parameters in the cost function (which represents the trade-off between the comm
 performance of the consensus protocol), different communication policies can be learned.
 
 Here, we provide our code to train and test the NN-ETM to facilitate the use of our proposal.
-
-```diff
-! Note: This repository may suffer changes during the peer review process of the paper.
-```
 
 
 User requirements
@@ -69,7 +65,7 @@ the design constants in the NN-ETM and the gain in the consensus protocol. To ed
 Citation
 --------
 
-If you find our proposal/code useful for your research, please cite our works as follows:
+If you find our proposal/code useful for your research, please cite our work as follows:
 
 ```bibtex
 @article{nnetm2024,
@@ -84,4 +80,4 @@ If you find our proposal/code useful for your research, please cite our works as
 Acknowledgments
 ---------------
 
-This work was supported via projects PID2021-124137OB-I00 and TED2021-130224B-I00 funded by MCIN/AEI/10.13039/501100011033, by ERDF A way of making Europe and by the European Union NextGenerationEU/PRTR, by the Gobierno de Aragón under Project DGA T45-23R, by the Universidad de Zaragoza and Banco Santander, by the Consejo Nacional de Ciencia y Tecnología (CONACYT-México) grant 739841, and by Spanish grant FPU20/03134.
+This work was supported via projects PID2021-124137OB-I00 and PID2024-159279OB-I00 funded by MICIU/AEI/10.13039/501100011033 and by ERDF/EU, via project REMAIN S1/1.1/E0111 (Interreg Sudoe Programme, ERDF), by the Gobierno de Aragón under Project DGA T45-23R, and by Spanish grant FPU20/03134. Grant reference BG24/00121 funded by MICIU/AEI/10.13039/501100011033.
