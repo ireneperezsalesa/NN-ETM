@@ -5,8 +5,7 @@ This is the companion code for the paper "NN-ETM: Enabling Safe Neural Network-B
 Event-Triggering Mechanisms for Consensus Problems", by 
 [Irene Perez-Salesa](https://ireneperezsalesa.github.io/), 
 [Rodrigo Aldana-Lopez](https://rodrigoaldana.github.io/) and 
-[Carlos Sagues](https://webdiis.unizar.es/~csagues/). The preprint can be found 
-[here](https://arxiv.org/abs/2403.12567). 
+[Carlos Sagues](https://webdiis.unizar.es/~csagues/). The paper is available [here](https://doi.org/10.1109/TSMC.2026.3740259) (open access).
 
 In this work, we develop NN-ETM, a neural network-based event-triggering mechanism for 
 multi-agent consensus problems. We aim to provide a general solution for the communication policy
@@ -68,11 +67,12 @@ Citation
 If you find our proposal/code useful for your research, please cite our work as follows:
 
 ```bibtex
-@article{nnetm2024,
+@article{nnetm,
   title = {{NN-ETM: Enabling Safe Neural Network-Based Event-Triggering Mechanisms for Consensus Problems}},
   author = {Irene Perez-Salesa and Rodrigo Aldana-Lopez and Carlos Sagues},
-  journal = {arXiv:2403.12567},
-  year = {2024}
+  journal = {IEEE Transactions on Systems, Man and Cybernetics: Systems},
+  year = {2026},
+  doi={10.1109/TSMC.2026.3740259}
 }
 ```
 
