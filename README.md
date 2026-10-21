@@ -5,7 +5,7 @@ This is the companion code for the paper "NN-ETM: Enabling Safe Neural Network-B
 Event-Triggering Mechanisms for Consensus Problems", by 
 [Irene Perez-Salesa](https://ireneperezsalesa.github.io/), 
 [Rodrigo Aldana-Lopez](https://rodrigoaldana.github.io/) and 
-[Carlos Sagues](https://webdiis.unizar.es/~csagues/). The paper is available [here](https://doi.org/10.1109/TSMC.2026.3740259) (open access).
+[Carlos Sagues](https://webdiis.unizar.es/~csagues/), published in IEEE Transactions on Systems, Man and Cybernetics: Systems. The paper is available [here](https://doi.org/10.1109/TSMC.2026.3740259) (open access).
 
 In this work, we develop NN-ETM, a neural network-based event-triggering mechanism for 
 multi-agent consensus problems. We aim to provide a general solution for the communication policy
